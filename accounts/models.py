@@ -24,6 +24,8 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Superuser must have is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
+        if extra_fields.get('is_active') is not True:
+            raise ValueError('is_active must have is True.')
 
         return self._create_user(phone, password, **extra_fields)
 
@@ -44,4 +46,4 @@ class User(AbstractBaseUser , PermissionsMixin):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.first_name
+        return self.phone
