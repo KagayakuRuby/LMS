@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser , BaseUserManager , PermissionsMixin
-
+from blog.models import *
 
 class CustomUserManager(BaseUserManager):
     def _create_user(self,phone,password=None,**extra_fields):
@@ -47,3 +47,15 @@ class User(AbstractBaseUser , PermissionsMixin):
 
     def __str__(self):
         return self.phone
+
+# class Article(BaseModel):
+#     title = models.CharField(max_length=200 , verbose_name='عنوان')
+#     author = models.ForeignKey(User,verbose_name='نویسنده',on_delete=models.CASCADE,related_name='articles')
+#     content = models.TextField(verbose_name='محتوا')
+
+#     class Meta:
+#         verbose_name = 'مقاله'
+#         verbose_name_plural ='مقالات'
+
+#     def __str__(self):
+#         return self.title
