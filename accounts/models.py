@@ -4,8 +4,15 @@ from blog.models import *
 
 class CustomUserManager(BaseUserManager):
     def _create_user(self,phone,password=None,**extra_fields):
+
+        first_name = extra_fields.get('first_name')
+        last_name = extra_fields.get('last_name')
         if not phone:
             raise ValueError('The Phone field must be set')
+        
+        if not first_name or not last_name:
+            raise ValueError('The Firstname or Lastname field must be set')
+        
         user = self.model(phone=phone, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -35,7 +42,7 @@ class CustomUserManager(BaseUserManager):
 
 class User(AbstractBaseUser , PermissionsMixin):
     phone = models.CharField(max_length=15, unique=True ,verbose_name='شماره تلفن')
-    first_name = models.CharField(max_length=20, null=True , blank=True)
+    first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20, null=True , blank=True)
     is_active =models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -43,10 +50,10 @@ class User(AbstractBaseUser , PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'phone'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name','last_name']
 
     def __str__(self):
-        return self.phone
+        return f"{self.first_name} {self.last_name}"
 
 # class Article(BaseModel):
 #     title = models.CharField(max_length=200 , verbose_name='عنوان')
