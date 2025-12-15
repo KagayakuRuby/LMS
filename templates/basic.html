@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}سایت من {% endblock %}</title>
+
+    <link href="https://cdn.fontcdn.ir/Font/Persian/IranSans.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+
+
+<body>
+    <header class="navbar">
+        <h1 class="logo"> <a href="{% url 'home'%}">Django Lab</a></h1>
+
+        <nav>
+            <a href="{% url 'home%}">سایت من</a>
+            <a href="#">درباره ما</a>
+            <a href="#">تماس</a>
+        </nav>
+
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+
+    </footer>
+
+</body>
+</html>
