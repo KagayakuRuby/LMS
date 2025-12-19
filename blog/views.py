@@ -3,4 +3,8 @@ from django.http import HttpResponse
 
 
 def my_view(request):
-    return render(request,'home.html')
+    context = {
+        "username" : "Mohsen",
+        "skills" : ["python","django","html"]
+    }
+    return render(request,'portfolio.html',context)

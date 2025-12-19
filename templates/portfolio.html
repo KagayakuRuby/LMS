@@ -1,0 +1,15 @@
+{% extends 'basic.html' %}
+{% block title%}پورتفولیو{% endblock %}
+
+
+{% block content %}
+
+<h1>Name : {{username}}</h1>
+<ul>
+    {% for skill in skills %}
+    <li>
+        {{skill}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
