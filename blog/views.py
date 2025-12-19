@@ -8,3 +8,6 @@ def my_view(request):
         "skills" : ["python","django","html"]
     }
     return render(request,'portfolio.html',context)
+
+def article_id(request,article_id):
+    return HttpResponse(f"article_id: {article_id}")
