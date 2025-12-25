@@ -1,0 +1,18 @@
+{% extends 'basic.html' %}
+{% block title%}پورتفولیو{% endblock %}
+
+
+{% block content %}
+
+<h1>Contact Us</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>name</label>
+    <br>
+    <input type="text" name="name">
+    <br>
+    <textarea name="message" rows="4"></textarea>
+    <br>
+    <button type="submit">Send</button>
+</form>
+{% endblock %}
