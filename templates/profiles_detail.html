@@ -1,0 +1,17 @@
+{% extends 'basic.html' %}
+{% block title%}پورتفولیو{% endblock %}
+
+
+{% block content %}
+<h1>{{profile.full_name}}</h1>
+<p>Role : {{profile.get_role_display}}</p>
+
+{% if profile.avatar%}
+    <img src="{{profile.avatar.url}}" alt="{profile.full_name}" width="120">
+
+{% endif %}
+
+<p>Location: {{profile.location|default:"-"}}</p>
+<p>Register Courses: {{profile.course_enable}} / End Course: {{profile.course_completed}}</p>
+
+{% endblock %}

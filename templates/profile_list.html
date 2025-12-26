@@ -1,0 +1,23 @@
+{% extends 'basic.html' %}
+{% block title%}پورتفولیو{% endblock %}
+
+
+{% block content %}
+<h1>Profile list</h1>
+
+
+<ul>
+
+    {% for p in profiles %}
+        <li>
+            <a href="{% url 'profiles-detail' p.pk %}">
+                {{p.full_name}} - {{p.role}}
+            </a>
+        </li>
+    {% empty %}
+        <li>Not found</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
