@@ -15,8 +15,27 @@
 
 <body>
     <header class="navbar">
-        <h1 class="logo"> <a href="{% url 'home'%}">Django Lab</a></h1>
+    {% if messages %}
+        <ul>
+            
+                {% for message in messages %}
+                <li>
+                    {{messages}}
+                </li>
+                {% endfor %}
+            
+        </ul>
+        
+    {% endif%}
 
+        <h1 class="logo"> <a href="{% url 'home'%}">Django Lab</a></h1>
+        {% if user.is_authenticated%}
+            {{user.first_name}} سلام
+            <a href="{% url 'logout'%}">خروج</a>
+        {%else%}
+            <a href="{% url 'login' %}">ورود</a>
+            <a href="{% url 'signup' %}">ثبت نام</a>
+        {% endif %}
         <nav>
             <a href="{% url 'home'%}">سایت من</a>
             <a href="#">درباره ما</a>

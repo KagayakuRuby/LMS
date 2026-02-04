@@ -1,14 +1,14 @@
 {% extends 'basic.html' %}
-{% block title%}پورتفولیو{% endblock %}
+{% block title%}Register{% endblock %}
 
 
 {% block content %}
 
-<h1>Subscribe</h1>
+<h1>Register</h1>
 <form method="post">
     {% csrf_token %}
-    {{form.as_table}}
+    {{form.as_p}}
 <button type="submit">Send</button>
-
 </form>
+
 {% endblock %}
